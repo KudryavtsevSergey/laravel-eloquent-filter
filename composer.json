@@ -1,0 +1,15 @@
+{
+    "name": "sun/laravel-eloquent-filter",
+    "autoload": {
+        "psr-4": {
+            "Sun\\LaravelEloquentFilter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sun",
+            "email": "invaderman@mail.ru"
+        }
+    ],
+    "require": {}
+}
