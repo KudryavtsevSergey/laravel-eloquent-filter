@@ -78,10 +78,7 @@ abstract class AbstractSearchFilter implements SearchFilter
     private function getFilterField(string $searchKey): SearchTypeInterface
     {
         $filterFields = $this->getFilterFields();
-        if (is_null($filterField = $filterFields[$searchKey] ?? null)) {
-            throw new InvalidValueException($searchKey, array_keys($filterFields));
-        }
-        return $filterField;
+        return $filterFields[$searchKey] ?? throw new InvalidValueException($searchKey, array_keys($filterFields));
     }
 
     /**
