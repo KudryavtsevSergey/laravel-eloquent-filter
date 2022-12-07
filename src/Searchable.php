@@ -16,7 +16,7 @@ class Searchable
         return $this->search;
     }
 
-    public function replaceSearch(string $field, array $value): void
+    public function replaceSearch(string $field, mixed $value): void
     {
         $this->search[$field] = $value;
     }

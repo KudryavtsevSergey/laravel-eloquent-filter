@@ -2,13 +2,14 @@
 
 namespace Sun\LaravelEloquentFilter\Fields;
 
+use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Sun\LaravelEloquentFilter\Enum\FieldSearchTypeEnum;
 
 class CustomSearchType implements CustomSearchTypeInterface
 {
     public function __construct(
-        private $callback,
+        private Closure $callback,
         private string $fieldType = FieldSearchTypeEnum::STRING,
     ) {
     }
