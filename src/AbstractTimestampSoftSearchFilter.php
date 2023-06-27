@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\LaravelEloquentFilter;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Sun\LaravelEloquentFilter\Components\DeletableFilterInterface;
 use Sun\LaravelEloquentFilter\Components\DeletableFilterTrait;
 use Sun\LaravelEloquentFilter\Enum\DeletableTypeEnum;
@@ -20,11 +21,13 @@ abstract class AbstractTimestampSoftSearchFilter extends AbstractTimestampSearch
     public function applyFilters(Builder $builder): Builder
     {
         parent::applyFilters($builder);
-        $this->deletable($builder);
+        if ($builder instanceof SoftDeletableInterface) {
+            $this->deletable($builder);
+        }
         return $builder;
     }
 
-    private function deletable(Builder|SoftDeletes $builder): void
+    private function deletable(SoftDeletableInterface $builder): void
     {
         switch ($this->softFilter?->getDeletableType()) {
             case DeletableTypeEnum::ALL:

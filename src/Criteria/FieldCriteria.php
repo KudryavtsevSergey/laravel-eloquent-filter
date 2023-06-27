@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\LaravelEloquentFilter\Criteria;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Sun\LaravelEloquentFilter\Mapper\CriteriaDatabaseOperatorMapper;
 use Sun\LaravelEloquentFilter\Utils\CriteriaUtils;
@@ -9,24 +12,19 @@ use Sun\LaravelEloquentFilter\Utils\CriteriaUtils;
 class FieldCriteria implements CriteriaInterface
 {
     public function __construct(
-        private mixed $value,
+        private Carbon|bool|float|int|string|null $value,
         private string $criteria,
         private string $fieldType
     ) {
     }
 
-    private function getFormattedValue(): mixed
+    private function getFormattedValue(): string|int|bool|float|Carbon
     {
         return CriteriaUtils::formatValue($this->fieldType, $this->value);
     }
 
     public function configureBuilder(Builder $builder, string $field): void
     {
-        $builder->where($field, $this->getOperator(), $this->getFormattedValue());
-    }
-
-    protected function getOperator(): string
-    {
-        return CriteriaDatabaseOperatorMapper::map($this->criteria);
+        $builder->where($field, CriteriaDatabaseOperatorMapper::map($this->criteria), $this->getFormattedValue());
     }
 }

@@ -11,5 +11,8 @@
             "email": "invaderman@mail.ru"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "orchestra/testbench": "^8.5"
+    }
 }

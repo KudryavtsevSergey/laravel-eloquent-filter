@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\LaravelEloquentFilter;
 
 use Illuminate\Database\Eloquent\Builder;
-use Sun\LaravelEloquentFilter\Enum\SortOrderEnum;
 use Sun\LaravelEloquentFilter\Exceptions\InvalidValueException;
 use Sun\LaravelEloquentFilter\Fields\CustomSearchTypeInterface;
 use Sun\LaravelEloquentFilter\Fields\SearchTypeInterface;
@@ -30,21 +31,10 @@ abstract class AbstractSearchFilter implements SearchFilter
 
     private function order(Builder $builder): void
     {
-        $sortOrder = $this->sortOrder();
+        $sortOrder = $this->searchable->getSort();
         foreach ($sortOrder as $item) {
-            $builder->orderBy($item['column'], $item['order']);
+            $builder->orderBy($item->getColumn(), $item->getDirection());
         }
-    }
-
-    private function sortOrder(): array
-    {
-        $sortBy = $this->searchable->getSortBy();
-        $sortDesc = $this->searchable->getSortDesc();
-
-        return array_map(static fn($order, $column): array => [
-            'column' => $column,
-            'order' => filter_var($order, FILTER_VALIDATE_BOOLEAN) ? SortOrderEnum::DESC : SortOrderEnum::ASC,
-        ], $sortDesc, $sortBy);
     }
 
     private function search(Builder $builder): void
