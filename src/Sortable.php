@@ -21,6 +21,6 @@ class Sortable
 
     public function getDirection(): string
     {
-        return $this->sortDesc ? SortOrderConstant::ASC : SortOrderConstant::DESC;
+        return $this->sortDesc ? SortOrderConstant::DESC : SortOrderConstant::ASC;
     }
 }
