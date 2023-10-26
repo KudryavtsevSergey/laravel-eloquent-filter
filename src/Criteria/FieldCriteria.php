@@ -12,9 +12,9 @@ use Sun\LaravelEloquentFilter\Utils\CriteriaUtils;
 class FieldCriteria implements CriteriaInterface
 {
     public function __construct(
-        private Carbon|bool|float|int|string|null $value,
-        private string $criteria,
-        private string $fieldType
+        private readonly Carbon|bool|float|int|string|null $value,
+        private readonly string $criteria,
+        private readonly string $fieldType
     ) {
     }
 

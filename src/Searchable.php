@@ -12,7 +12,7 @@ class Searchable
      */
     public function __construct(
         private array $search = [],
-        private array $sort = [],
+        private readonly array $sort = [],
     ) {
     }
 

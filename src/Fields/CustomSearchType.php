@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 class CustomSearchType implements CustomSearchTypeInterface
 {
     public function __construct(
-        private Closure $callback,
+        private readonly Closure $callback,
     ) {
     }
 

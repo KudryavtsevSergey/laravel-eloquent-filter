@@ -13,8 +13,10 @@ abstract class AbstractTimestampSoftSearchFilter extends AbstractTimestampSearch
 {
     use DeletableFilterTrait;
 
-    public function __construct(Searchable $searchable, private ?SoftFilter $softFilter = null)
-    {
+    public function __construct(
+        Searchable $searchable,
+        private readonly ?SoftFilter $softFilter = null,
+    ) {
         parent::__construct($searchable);
     }
 

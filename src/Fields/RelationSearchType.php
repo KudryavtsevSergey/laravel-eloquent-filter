@@ -11,7 +11,7 @@ class RelationSearchType extends AbstractSearchType
 {
     public function __construct(
         string $relation,
-        private SearchTypeInterface $searchType,
+        private readonly SearchTypeInterface $searchType,
     ) {
         parent::__construct($relation);
     }

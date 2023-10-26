@@ -9,8 +9,8 @@ use Sun\LaravelEloquentFilter\Constant\SortOrderConstant;
 class Sortable
 {
     public function __construct(
-        private string $column,
-        private bool $sortDesc,
+        private readonly string $column,
+        private readonly bool $sortDesc,
     ) {
     }
 

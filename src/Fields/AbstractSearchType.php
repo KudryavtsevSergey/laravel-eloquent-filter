@@ -7,7 +7,7 @@ namespace Sun\LaravelEloquentFilter\Fields;
 abstract class AbstractSearchType implements SearchTypeInterface
 {
     public function __construct(
-        private string $field,
+        private readonly string $field,
     ) {
     }
 

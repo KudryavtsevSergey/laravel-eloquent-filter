@@ -10,8 +10,8 @@ use Sun\LaravelEloquentFilter\Utils\CriteriaUtils;
 class InCriteria implements CriteriaInterface
 {
     public function __construct(
-        private array $value,
-        private string $fieldType,
+        private readonly array $value,
+        private readonly string $fieldType,
     ) {
     }
 

@@ -9,7 +9,7 @@ use Sun\LaravelEloquentFilter\Enum\DeletableTypeEnum;
 class SoftFilter
 {
     public function __construct(
-        private string $deletableType = DeletableTypeEnum::ACTIVE,
+        private readonly string $deletableType = DeletableTypeEnum::ACTIVE,
     ) {
         DeletableTypeEnum::checkAllowedValue($deletableType);
     }

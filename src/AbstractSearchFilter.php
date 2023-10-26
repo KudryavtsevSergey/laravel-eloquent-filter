@@ -12,7 +12,7 @@ use Sun\LaravelEloquentFilter\Fields\SearchTypeInterface;
 abstract class AbstractSearchFilter implements SearchFilter
 {
     public function __construct(
-        private Searchable $searchable,
+        private readonly Searchable $searchable,
     ) {
     }
 

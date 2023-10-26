@@ -13,7 +13,7 @@ class FieldSearchType extends AbstractSearchType
 {
     public function __construct(
         string $field,
-        private string $fieldType = FieldSearchTypeEnum::STRING,
+        private readonly string $fieldType = FieldSearchTypeEnum::STRING,
     ) {
         parent::__construct($field);
     }
